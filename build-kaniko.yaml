@@ -1,0 +1,16 @@
+apiVersion: shipwright.io/v1beta1
+kind: Build
+metadata:
+  name: kaniko-py-build
+spec:
+  source:
+    type: Git
+    git:
+      url: https://github.com/meirongdev/hello_python
+    contextDir: ./
+  strategy:
+    name: kaniko
+    kind: ClusterBuildStrategy
+  output:
+    image: docker.io/meirongdev/hello-py:latest
+    pushSecret: push-secret
